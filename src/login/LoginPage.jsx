@@ -17,7 +17,11 @@ import { makeStyles } from 'tss-react/mui';
 import CloseIcon from '@mui/icons-material/Close';
 import VpnLockIcon from '@mui/icons-material/VpnLock';
 import QrCode2Icon from '@mui/icons-material/QrCode2';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import { useTheme } from '@mui/material/styles';
+import { InputAdornment, Divider } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { sessionActions } from '../store';
@@ -212,31 +216,47 @@ const LoginPage = () => {
             <TextField
               required
               error={failed}
-              label={t('userEmail')}
+              placeholder="Correo electrónico"
               name="email"
               value={email}
               autoComplete="email"
               autoFocus={!email}
               onChange={(e) => setEmail(e.target.value)}
               helperText={failed && 'Invalid username or password'}
-              InputProps={{ style: { borderRadius: '8px' } }}
+              InputProps={{ 
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailOutlinedIcon color="action" fontSize="small" />
+                  </InputAdornment>
+                ),
+                style: { borderRadius: '8px' } 
+              }}
             />
             <PasswordField
               required
               error={failed}
-              label={t('userPassword')}
+              placeholder="Contraseña"
               name="password"
               value={password}
               autoComplete="current-password"
               autoFocus={!!email}
               onChange={(e) => setPassword(e.target.value)}
-              InputProps={{ style: { borderRadius: '8px' } }}
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockOutlinedIcon color="action" fontSize="small" />
+                    </InputAdornment>
+                  ),
+                  style: { borderRadius: '8px' }
+                }
+              }}
             />
             {codeEnabled && (
               <TextField
                 required
                 error={failed}
-                label={t('loginTotpCode')}
+                placeholder="Código"
                 name="code"
                 value={code}
                 type="number"
@@ -267,8 +287,23 @@ const LoginPage = () => {
               fullWidth
               disabled={!email || !password || (codeEnabled && !code)}
             >
-              {t('loginLogin')}
+              INICIAR SESIÓN
             </Button>
+            
+            <Divider style={{ marginTop: theme.spacing(3), marginBottom: theme.spacing(3), color: '#94a3b8', fontSize: '0.875rem' }}>
+              o continúa con
+            </Divider>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: theme.spacing(4) }}>
+              <IconButton style={{ border: '1px solid #e2e8f0', borderRadius: '50%', padding: '12px' }}>
+                <VerifiedUserOutlinedIcon color="primary" />
+              </IconButton>
+            </div>
+            
+            <Typography variant="body2" style={{ textAlign: 'center', color: '#475569', marginTop: theme.spacing(2) }}>
+              <span style={{ fontWeight: 800, color: '#1E293B', fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>K</span>
+              Tecnología que <span style={{ color: '#2563EB', fontWeight: 600 }}>conecta</span>, <span style={{ color: '#2563EB', fontWeight: 600 }}>protege</span> y <span style={{ color: '#2563EB', fontWeight: 600 }}>transforma</span>.
+            </Typography>
           </>
         )}
         {openIdEnabled && (
