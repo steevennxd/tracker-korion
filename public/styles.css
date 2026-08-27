@@ -25,3 +25,36 @@ body {
     overflow: visible !important;
   }
 }
+
+/* ===== Login Page Input Overrides ===== */
+.login-input input,
+.login-input textarea {
+  background-color: #ffffff !important;
+  color: #1E293B !important;
+  -webkit-text-fill-color: #1E293B !important;
+}
+
+.login-input input:-webkit-autofill,
+.login-input input:-webkit-autofill:hover,
+.login-input input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #1E293B !important;
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+.login-input .MuiOutlinedInput-root {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+}
+
+.login-input .MuiOutlinedInput-notchedOutline {
+  border-color: #E2E8F0 !important;
+}
+
+.login-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #CBD5E1 !important;
+}
+
+.login-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #2563EB !important;
+}

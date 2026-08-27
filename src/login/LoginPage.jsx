@@ -224,19 +224,14 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               helperText={failed && 'Correo o contraseña inválidos'}
               variant="outlined"
+              className="login-input"
               InputProps={{ 
                 startAdornment: (
                   <InputAdornment position="start">
                     <EmailOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                   </InputAdornment>
                 ),
-                style: { 
-                  borderRadius: '8px',
-                  backgroundColor: '#ffffff',
-                  color: '#1E293B',
-                } 
               }}
-              inputProps={{ style: { color: '#1E293B' } }}
             />
             <PasswordField
               required
@@ -247,6 +242,7 @@ const LoginPage = () => {
               autoComplete="current-password"
               autoFocus={!!email}
               onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
               slotProps={{
                 input: {
                   startAdornment: (
@@ -254,14 +250,8 @@ const LoginPage = () => {
                       <LockOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                     </InputAdornment>
                   ),
-                  style: { 
-                    borderRadius: '8px',
-                    backgroundColor: '#ffffff',
-                    color: '#1E293B',
-                  }
                 }
               }}
-              inputProps={{ style: { color: '#1E293B' } }}
             />
             {codeEnabled && (
               <TextField
@@ -272,7 +262,7 @@ const LoginPage = () => {
                 value={code}
                 type="number"
                 onChange={(e) => setCode(e.target.value)}
-                InputProps={{ style: { borderRadius: '8px', backgroundColor: '#ffffff' } }}
+                className="login-input"
               />
             )}
             
