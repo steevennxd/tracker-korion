@@ -223,23 +223,20 @@ const LoginPage = () => {
               autoFocus={!email}
               onChange={(e) => setEmail(e.target.value)}
               helperText={failed && 'Correo o contraseña inválidos'}
+              variant="outlined"
               InputProps={{ 
                 startAdornment: (
                   <InputAdornment position="start">
                     <EmailOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                   </InputAdornment>
                 ),
-                style: { borderRadius: '8px', backgroundColor: '#ffffff' } 
+                style: { 
+                  borderRadius: '8px',
+                  backgroundColor: '#ffffff',
+                  color: '#1E293B',
+                } 
               }}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': { borderColor: '#E2E8F0' },
-                  '&:hover fieldset': { borderColor: '#CBD5E1' },
-                  '&.Mui-focused fieldset': { borderColor: '#2563EB' },
-                },
-                '& input': { color: '#1E293B' },
-                '& input::placeholder': { color: '#94A3B8', opacity: 1 },
-              }}
+              inputProps={{ style: { color: '#1E293B' } }}
             />
             <PasswordField
               required
@@ -257,18 +254,14 @@ const LoginPage = () => {
                       <LockOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                     </InputAdornment>
                   ),
-                  style: { borderRadius: '8px', backgroundColor: '#ffffff' }
+                  style: { 
+                    borderRadius: '8px',
+                    backgroundColor: '#ffffff',
+                    color: '#1E293B',
+                  }
                 }
               }}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': { borderColor: '#E2E8F0' },
-                  '&:hover fieldset': { borderColor: '#CBD5E1' },
-                  '&.Mui-focused fieldset': { borderColor: '#2563EB' },
-                },
-                '& input': { color: '#1E293B' },
-                '& input::placeholder': { color: '#94A3B8', opacity: 1 },
-              }}
+              inputProps={{ style: { color: '#1E293B' } }}
             />
             {codeEnabled && (
               <TextField
