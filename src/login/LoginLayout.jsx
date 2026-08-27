@@ -37,7 +37,9 @@ const useStyles = makeStyles()((theme) => ({
     alignItems: 'center',
     width: '55%',
     position: 'relative',
-    background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+    backgroundImage: 'url(/bg_k.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     overflow: 'hidden',
     [theme.breakpoints.down('md')]: {
       width: '100%',
@@ -146,8 +148,7 @@ const LoginLayout = ({ children }) => {
 
       {/* Lado Derecho: Visual */}
       <div className={classes.sidebar}>
-        <div className={classes.shape1} />
-        <div className={classes.shape2} />
+        <img src="/robot.png" alt="Robot Korion" style={{ zIndex: 1, maxWidth: '85%', maxHeight: '70%', objectFit: 'contain', marginBottom: '80px' }} />
         
         <Box className={classes.appsCard}>
           <Typography className={classes.appsTitle}>
