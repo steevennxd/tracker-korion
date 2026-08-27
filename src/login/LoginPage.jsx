@@ -206,7 +206,7 @@ const LoginPage = () => {
       <div className={classes.container}>
         {!openIdForced && (
           <>
-            <img src="/LogoSinfondo.png" alt="Korion Technology" style={{ width: '220px', marginBottom: '24px', alignSelf: 'center' }} />
+            <img src="/LogoSinFondo.png" alt="Korion Technology" style={{ width: '220px', marginBottom: '24px', alignSelf: 'center' }} />
             <Typography variant="h4" component="h1" gutterBottom style={{ fontWeight: 700, color: '#1E293B', marginTop: theme.spacing(2) }}>
               Bienvenido
             </Typography>
@@ -222,14 +222,23 @@ const LoginPage = () => {
               autoComplete="email"
               autoFocus={!email}
               onChange={(e) => setEmail(e.target.value)}
-              helperText={failed && 'Invalid username or password'}
+              helperText={failed && 'Correo o contraseña inválidos'}
               InputProps={{ 
                 startAdornment: (
                   <InputAdornment position="start">
-                    <EmailOutlinedIcon color="action" fontSize="small" />
+                    <EmailOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                   </InputAdornment>
                 ),
-                style: { borderRadius: '8px' } 
+                style: { borderRadius: '8px', backgroundColor: '#ffffff' } 
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#E2E8F0' },
+                  '&:hover fieldset': { borderColor: '#CBD5E1' },
+                  '&.Mui-focused fieldset': { borderColor: '#2563EB' },
+                },
+                '& input': { color: '#1E293B' },
+                '& input::placeholder': { color: '#94A3B8', opacity: 1 },
               }}
             />
             <PasswordField
@@ -245,11 +254,20 @@ const LoginPage = () => {
                 input: {
                   startAdornment: (
                     <InputAdornment position="start">
-                      <LockOutlinedIcon color="action" fontSize="small" />
+                      <LockOutlinedIcon style={{ color: '#94A3B8' }} fontSize="small" />
                     </InputAdornment>
                   ),
-                  style: { borderRadius: '8px' }
+                  style: { borderRadius: '8px', backgroundColor: '#ffffff' }
                 }
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#E2E8F0' },
+                  '&:hover fieldset': { borderColor: '#CBD5E1' },
+                  '&.Mui-focused fieldset': { borderColor: '#2563EB' },
+                },
+                '& input': { color: '#1E293B' },
+                '& input::placeholder': { color: '#94A3B8', opacity: 1 },
               }}
             />
             {codeEnabled && (
@@ -261,21 +279,19 @@ const LoginPage = () => {
                 value={code}
                 type="number"
                 onChange={(e) => setCode(e.target.value)}
-                InputProps={{ style: { borderRadius: '8px' } }}
+                InputProps={{ style: { borderRadius: '8px', backgroundColor: '#ffffff' } }}
               />
             )}
             
-            {emailEnabled && (
-              <Link
-                onClick={() => navigate('/reset-password')}
-                className={classes.link}
-                underline="none"
-                variant="body2"
-                style={{ textAlign: 'center', width: '100%', marginBottom: theme.spacing(2), marginTop: theme.spacing(1) }}
-              >
-                ¿Olvidaste tu contraseña?
-              </Link>
-            )}
+            <Link
+              onClick={() => navigate('/reset-password')}
+              className={classes.link}
+              underline="none"
+              variant="body2"
+              style={{ textAlign: 'right', width: '100%', marginTop: theme.spacing(0.5), color: '#2563EB' }}
+            >
+              ¿Olvidaste tu contraseña?
+            </Link>
 
             <Button
               onClick={handlePasswordLogin}
