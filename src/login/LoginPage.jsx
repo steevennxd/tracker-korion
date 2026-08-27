@@ -200,16 +200,14 @@ const LoginPage = () => {
         )}
       </div>
       <div className={classes.container}>
-        {useMediaQuery(theme.breakpoints.down('lg')) && (
-          <LogoImage color={theme.palette.primary.main} />
-        )}
         {!openIdForced && (
           <>
-            <Typography variant="h4" component="h1" gutterBottom style={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#0F172A', marginTop: theme.spacing(2) }}>
-              Bienvenido a Korion GPS
+            <img src="/LogoSinfondo.png" alt="Korion Technology" style={{ width: '220px', marginBottom: '24px', alignSelf: 'center' }} />
+            <Typography variant="h4" component="h1" gutterBottom style={{ fontWeight: 700, color: '#1E293B', marginTop: theme.spacing(2) }}>
+              Bienvenido
             </Typography>
-            <Typography variant="body1" style={{ marginBottom: theme.spacing(3), color: theme.palette.mode === 'dark' ? '#94a3b8' : '#475569' }}>
-              Ingrese sus credenciales corporativas para acceder al panel de control.
+            <Typography variant="body1" style={{ marginBottom: theme.spacing(4), color: '#475569' }}>
+              Accede a tu cuenta <span style={{ color: '#2563EB', fontWeight: 600 }}>Korion</span>
             </Typography>
             <TextField
               required
@@ -221,6 +219,7 @@ const LoginPage = () => {
               autoFocus={!email}
               onChange={(e) => setEmail(e.target.value)}
               helperText={failed && 'Invalid username or password'}
+              InputProps={{ style: { borderRadius: '8px' } }}
             />
             <PasswordField
               required
@@ -231,6 +230,7 @@ const LoginPage = () => {
               autoComplete="current-password"
               autoFocus={!!email}
               onChange={(e) => setPassword(e.target.value)}
+              InputProps={{ style: { borderRadius: '8px' } }}
             />
             {codeEnabled && (
               <TextField
@@ -241,15 +241,30 @@ const LoginPage = () => {
                 value={code}
                 type="number"
                 onChange={(e) => setCode(e.target.value)}
+                InputProps={{ style: { borderRadius: '8px' } }}
               />
             )}
+            
+            {emailEnabled && (
+              <Link
+                onClick={() => navigate('/reset-password')}
+                className={classes.link}
+                underline="none"
+                variant="body2"
+                style={{ textAlign: 'center', width: '100%', marginBottom: theme.spacing(2), marginTop: theme.spacing(1) }}
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
+            )}
+
             <Button
               onClick={handlePasswordLogin}
               type="submit"
               variant="contained"
               color="primary"
               size="large"
-              style={{ marginTop: theme.spacing(2) }}
+              style={{ borderRadius: '8px', padding: '12px 0', fontSize: '1rem', fontWeight: 600, boxShadow: 'none' }}
+              fullWidth
               disabled={!email || !password || (codeEnabled && !code)}
             >
               {t('loginLogin')}
